@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul');
             $table->string('alamat')->nullable();
             $table->longText('deskripsi')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HeroResource\Pages;
-use App\Filament\Resources\HeroResource\RelationManagers;
-use App\Models\Hero;
+use App\Filament\Resources\SejarahResource\Pages;
+use App\Filament\Resources\SejarahResource\RelationManagers;
+use App\Models\Sejarah;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,35 +19,35 @@ use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HeroResource extends Resource
+class SejarahResource extends Resource
 {
-    protected static ?string $model = Hero::class;
+    protected static ?string $model = Sejarah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrows-pointing-out';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                Section::make([
-                    Grid::make()
-                        ->schema([
-                            TextInput::make('judul')
-                                ->required()
-                                ->maxLength(255),
+        ->schema([
+            Section::make([
+                Grid::make()
+                    ->schema([
+                        TextInput::make('judul')
+                            ->required()
+                            ->maxLength(255),
 
-                            MarkdownEditor::make('deskripsi')
-                                ->columnSpanFull()
-                                ->fileAttachmentsDirectory('hero'),
+                        MarkdownEditor::make('deskripsi')
+                            ->columnSpanFull()
+                            ->fileAttachmentsDirectory('hero'),
 
-                            FileUpload::make('image')
-                                ->multiple()
-                                ->directory('hero')
-                                ->maxFiles(5)
-                                ->reorderable(),
-                        ])
-                ])
-            ]);
+                        FileUpload::make('image')
+                            ->multiple()
+                            ->directory('hero')
+                            ->maxFiles(5)
+                            ->reorderable(),
+                    ])
+            ])
+        ]);
     }
 
     public static function table(Table $table): Table
@@ -75,11 +75,11 @@ class HeroResource extends Resource
                 //
             ])
             ->actions([
-                    Tables\Actions\ActionGroup::make([
-                        Tables\Actions\EditAction::make(),
-                        Tables\Actions\ViewAction::make(),
-                        Tables\Actions\DeleteAction::make(),
-                    ])
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -98,9 +98,9 @@ class HeroResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHeroes::route('/'),
-            'create' => Pages\CreateHero::route('/create'),
-            'edit' => Pages\EditHero::route('/{record}/edit'),
+            'index' => Pages\ListSejarahs::route('/'),
+            'create' => Pages\CreateSejarah::route('/create'),
+            'edit' => Pages\EditSejarah::route('/{record}/edit'),
         ];
     }
 }

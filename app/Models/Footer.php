@@ -10,4 +10,9 @@ class Footer extends Model
     use HasFactory;
 
     protected $fillable = ['judul', 'deskripsi', 'image','sosmed','no_telp'];
+
+    protected $casts = [
+        'sosmed' => 'json',
+        'no_telp' => 'json',
+    ];
 }

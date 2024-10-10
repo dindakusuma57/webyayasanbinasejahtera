@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HeroResource\Pages;
-use App\Filament\Resources\HeroResource\RelationManagers;
-use App\Models\Hero;
+use App\Filament\Resources\PpdbResource\Pages;
+use App\Filament\Resources\PpdbResource\RelationManagers;
+use App\Models\Ppdb;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,17 +13,15 @@ use Filament\Tables\Table;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HeroResource extends Resource
+class PpdbResource extends Resource
 {
-    protected static ?string $model = Hero::class;
+    protected static ?string $model = Ppdb::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrows-pointing-out';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -38,13 +36,7 @@ class HeroResource extends Resource
 
                             MarkdownEditor::make('deskripsi')
                                 ->columnSpanFull()
-                                ->fileAttachmentsDirectory('hero'),
-
-                            FileUpload::make('image')
-                                ->multiple()
-                                ->directory('hero')
-                                ->maxFiles(5)
-                                ->reorderable(),
+                                ->fileAttachmentsDirectory('visi'),
                         ])
                 ])
             ]);
@@ -58,10 +50,6 @@ class HeroResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
                     ->searchable(),
-                ImageColumn::make('image')
-                    ->label('Image')
-                    ->width(100)
-                    ->height(100),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -75,11 +63,7 @@ class HeroResource extends Resource
                 //
             ])
             ->actions([
-                    Tables\Actions\ActionGroup::make([
-                        Tables\Actions\EditAction::make(),
-                        Tables\Actions\ViewAction::make(),
-                        Tables\Actions\DeleteAction::make(),
-                    ])
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -98,9 +82,9 @@ class HeroResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHeroes::route('/'),
-            'create' => Pages\CreateHero::route('/create'),
-            'edit' => Pages\EditHero::route('/{record}/edit'),
+            'index' => Pages\ListPpdbs::route('/'),
+            'create' => Pages\CreatePpdb::route('/create'),
+            'edit' => Pages\EditPpdb::route('/{record}/edit'),
         ];
     }
 }

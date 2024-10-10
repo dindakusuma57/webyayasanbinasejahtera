@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HeroResource\Pages;
-use App\Filament\Resources\HeroResource\RelationManagers;
-use App\Models\Hero;
+use App\Filament\Resources\MisiResource\Pages;
+use App\Filament\Resources\MisiResource\RelationManagers;
+use App\Models\Misi;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,11 +19,11 @@ use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class HeroResource extends Resource
+class MisiResource extends Resource
 {
-    protected static ?string $model = Hero::class;
+    protected static ?string $model = Misi::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrows-pointing-out';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -38,13 +38,10 @@ class HeroResource extends Resource
 
                             MarkdownEditor::make('deskripsi')
                                 ->columnSpanFull()
-                                ->fileAttachmentsDirectory('hero'),
+                                ->fileAttachmentsDirectory('visi'),
 
                             FileUpload::make('image')
-                                ->multiple()
-                                ->directory('hero')
-                                ->maxFiles(5)
-                                ->reorderable(),
+                                ->directory('visi'),
                         ])
                 ])
             ]);
@@ -75,11 +72,7 @@ class HeroResource extends Resource
                 //
             ])
             ->actions([
-                    Tables\Actions\ActionGroup::make([
-                        Tables\Actions\EditAction::make(),
-                        Tables\Actions\ViewAction::make(),
-                        Tables\Actions\DeleteAction::make(),
-                    ])
+                Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -98,9 +91,9 @@ class HeroResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListHeroes::route('/'),
-            'create' => Pages\CreateHero::route('/create'),
-            'edit' => Pages\EditHero::route('/{record}/edit'),
+            'index' => Pages\ListMisis::route('/'),
+            'create' => Pages\CreateMisi::route('/create'),
+            'edit' => Pages\EditMisi::route('/{record}/edit'),
         ];
     }
 }

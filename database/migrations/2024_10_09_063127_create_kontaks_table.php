@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('kontaks', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->json('no_telp')->nullable();
             $table->json('sosmed')->nullable();
-            $table->string('map');
+            $table->string('map')->nullable();
             $table->timestamps();
         });
     }

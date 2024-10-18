@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('judul')->nullable();
             $table->string('alamat')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->string('link')->nullable();

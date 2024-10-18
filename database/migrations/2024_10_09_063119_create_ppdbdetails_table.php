@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('ppdbdetails', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->string('link');
+            $table->string('judul')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

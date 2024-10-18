@@ -38,13 +38,12 @@ class SejarahResource extends Resource
 
                         MarkdownEditor::make('deskripsi')
                             ->columnSpanFull()
-                            ->fileAttachmentsDirectory('hero'),
+                            ->fileAttachmentsDirectory('sejarah'),
 
                         FileUpload::make('image')
-                            ->multiple()
-                            ->directory('hero')
-                            ->maxFiles(5)
-                            ->reorderable(),
+                            ->image()
+                            ->directory('sejarah'),
+
                     ])
             ])
         ]);

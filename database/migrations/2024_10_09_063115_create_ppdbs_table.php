@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ppdbs', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('judul')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->timestamps();
         });

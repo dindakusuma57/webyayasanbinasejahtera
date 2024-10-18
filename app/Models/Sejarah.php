@@ -11,7 +11,5 @@ class Sejarah extends Model
 
     protected $fillable = ['judul', 'deskripsi', 'image'];
 
-    protected $casts = [
-        'image' => 'array',
-    ];
+    
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('categorypenguruses', function (Blueprint $table) {
             $table->id();
-            $table->string('tahun');
+            $table->string('tahun')->nullable();
             $table->timestamps();
         });
     }

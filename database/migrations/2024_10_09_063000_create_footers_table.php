@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
+            $table->string('judul')->nullable();
             $table->longText('deskripsi')->nullable();
             $table->string('image')->nullable();
             $table->json('sosmed')->nullable();

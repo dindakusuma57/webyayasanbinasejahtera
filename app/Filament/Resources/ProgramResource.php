@@ -38,10 +38,10 @@ class ProgramResource extends Resource
 
                             MarkdownEditor::make('deskripsi')
                                 ->columnSpanFull()
-                                ->fileAttachmentsDirectory('visi'),
+                                ->fileAttachmentsDirectory('program'),
 
                             FileUpload::make('image')
-                                ->directory('visi'),
+                                ->directory('program'),
                         ])
                 ])
             ]);

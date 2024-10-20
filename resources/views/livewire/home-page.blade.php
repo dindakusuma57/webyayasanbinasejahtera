@@ -28,7 +28,7 @@
                 @if($heroes->isNotEmpty())
                     @foreach($heroes as $hero)
                         <div class="flex-1"> <!-- Memungkinkan elemen untuk mengisi ruang -->
-                            <h1 class="block text-3xl font-bold text-white sm:text-4xl lg:text-6xl lg:leading-tight">
+                            <h1 style="width: 750px" class="block text-3xl font-bold text-white sm:text-4xl lg:text-6xl lg:leading-tight">
                                 {{ $hero->judul }}
                             </h1>
                             <p class="mt-3 text-lg text-white">
@@ -36,7 +36,7 @@
                             </p>
                             <!-- Buttons -->
                             <div class="mt-7">
-                                <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg bg-[#fff] text-blue-900 hover:bg-[#002500]" href="/register">
+                                <a class="py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg bg-[#fff] text-[#002500] hover:bg-[#002500] hover:text-[#fff]" href="/ppdb">
                                     Daftar Sekarang
                                     <svg class="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path d="m9 18 6-6-6-6" />
@@ -99,19 +99,53 @@
             </div>
         </div>
 
-        <div data-aos="fade-up" class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
-                @foreach($units as $unit)
-                    <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 h-40 flex items-center justify-center transition-transform transform hover:scale-105 hover:bg-[#002500] group">
-                        <div class="p-5 text-center">
-                            <a href="{{ $unit->link }}" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300 group-hover:text-[#fff]">
-                                {{ $unit->judul }}
-                            </a>
-                        </div>
+        <!-- Slider -->
+        <div data-hs-carousel='{
+            "loadingClasses": "opacity-0",
+            "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
+            "slidesQty": {
+            "xs": 1,
+            "lg": 3
+            }
+            }' class="relative px-20" data-aos="fade-up">
+            <div class="hs-carousel w-full overflow-hidden rounded-lg">
+            <div class="relative min-h-72 -mx-1">
+                <!-- transition-transform duration-700 -->
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 transition-transform duration-700">
+                    @foreach($units as $unit)
+                <div class="hs-carousel-slide px-1">
+                    <div class="flex justify-center h-full bg-gray-100 p-6 dark:bg-neutral-900" style="align-items: center">
+                        <a href="{{ $unit->link }}" class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-300 group-hover:text-[#fff]">
+                            {{ $unit->judul }}
+                        </a>
                     </div>
+                </div>
                 @endforeach
+                </div>
             </div>
+            </div>
+
+            <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+            style="margin-left: 20px">
+            <span class="text-2xl" aria-hidden="true">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m15 18-6-6 6-6"></path>
+                </svg>
+            </span>
+            <span class="sr-only">Previous</span>
+            </button>
+            <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+            style="margin-right: 20px">
+            <span class="sr-only">Next</span>
+            <span class="text-2xl" aria-hidden="true">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m9 18 6-6-6-6"></path>
+                </svg>
+            </span>
+            </button>
+            <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
         </div>
+        <!-- End Slider -->
         </section>
       {{-- Unit End --}}
 

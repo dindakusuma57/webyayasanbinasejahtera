@@ -1,3 +1,9 @@
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 <div>
     <div class="bg-[#6B9B55] p-4 text-white text-center">
         <h1 class="text-lg font-semibold">Sejarah</h1>
@@ -5,7 +11,7 @@
 
     {{-- SEJARAH START --}}
     <section class="p-6 bg-white text-gray-800 flex flex-col md:flex-row">
-        <div class="md:w-2/3">
+        <div data-aos="fade-up" class="md:w-2/3">
             <h2 class="text-xl font-bold mb-4">Sejarah Yayasan Bina Sejahtera</h2>
 
             @foreach($sejarahs as $sejarah)
@@ -28,7 +34,7 @@
 
     {{-- SEJARAH KEPENGURUSAN START --}}
     <section class="py-20">
-        <div class="max-w-6xl mx-auto">
+        <div data-aos="fade-up" class="max-w-6xl mx-auto">
             <div class="text-center">
                 <div class="mb-2 p-2 bg-[#6B9B55] border-2 border-[#6B9B55] rounded-full inline-block">
                     <span class="text-white font-semibold">Sejarah Kepengurusan</span>

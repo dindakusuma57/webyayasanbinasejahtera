@@ -22,6 +22,10 @@ class CategorypengurusResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-bars-arrow-down';
 
+    protected static ?string $navigationGroup = 'Profile';
+
+    protected static ?int $navigationSort = 4;
+
     public static function form(Form $form): Form
     {
         return $form

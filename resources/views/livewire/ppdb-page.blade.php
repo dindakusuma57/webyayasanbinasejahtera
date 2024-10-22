@@ -3,6 +3,7 @@
 <script>
     AOS.init();
 </script>
+<link rel="stylesheet" href="css/style.css">
 
 <div>
     <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">
@@ -32,8 +33,8 @@
             <p id="more-text" class="hidden mt-2 text-gray-700 text-justify">{{ $fullText }}</p>
         </div>
 
-        <button id="toggle-btn" class="mt-4 text-blue-500 focus:outline-none">Baca Selengkapnya</button>
-        <button id="hide-btn" class="hidden mt-4 text-blue-500 focus:outline-none">Baca Lebih Sedikit</button>
+        <button id="toggle-btn" class="mt-4 text-white focus:outline-none">Baca Selengkapnya</button>
+        <button id="hide-btn" class="hidden mt-4 text-white focus:outline-none">Baca Lebih Sedikit</button>
     </section>
     {{-- PENJELASAN PPDB END --}}
 

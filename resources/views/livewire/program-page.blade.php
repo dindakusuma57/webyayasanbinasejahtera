@@ -1,3 +1,9 @@
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 <div>
     <!-- Bagian Header -->
     <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">

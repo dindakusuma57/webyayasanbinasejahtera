@@ -40,3 +40,23 @@
         }
       }
 
+      #toggle-btn, #hide-btn {
+        background-color: #6B9B55; /* Ganti dengan warna yang diinginkan */
+        padding: 10px 20px; /* Menambah padding untuk tombol */
+        border: none; /* Menghapus border default */
+        border-radius: 5px; /* Menambah sudut melengkung */
+        cursor: pointer; /* Mengubah cursor saat hover */
+    }
+
+    #toggle-btn:hover, #hide-btn:hover {
+        background-color: #002500; /* Warna saat hover */
+    }
+
+    @layer components {
+        .btn-primary {
+            @apply py-1.5 px-3 text-center bg-blue-700 rounded-md text-white;
+        }
+      }
+
+      
+

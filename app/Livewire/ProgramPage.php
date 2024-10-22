@@ -3,22 +3,25 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Program; // Pastikan untuk mengimpor model yang sesuai
+use Livewire\WithPagination; // Import WithPagination
+use App\Models\Program;
+use Livewire\Attributes\Title;
+
+#[Title('Program - Yayasan Bina Sejahtera')]
 
 class ProgramPage extends Component
 {
-    public $programs; // Properti untuk menyimpan data program
-
-    public function mount() // Metode ini dijalankan saat komponen di-inisialisasi
-    {
-        $this->programs = Program::all(); // Mengambil semua data program dari database
-    }
+    use WithPagination; // Tambahkan trait ini untuk mendukung pagination di Livewire
 
     public function render()
     {
+        // Ambil 8 program per halaman menggunakan paginate()
+        $programs = Program::paginate(6);
+
         return view('livewire.program-page', [
-            'programs' => $this->programs // Mengirim data ke tampilan
+            'programs' => $programs
         ]);
     }
 }
+
 

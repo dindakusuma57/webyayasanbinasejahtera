@@ -10,12 +10,15 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use App\Models\Set;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -33,8 +36,21 @@ class ProgramResource extends Resource
                     Grid::make()
                         ->schema([
                             TextInput::make('judul')
+    ->required()
+    ->maxLength(255)
+    ->live(onBlur:true)
+    ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) =>
+        $operation === 'create' ? $set('slug', Str::slug($state)) : null
+    ),
+
+
+                            TextInput::make('slug')
+                                ->maxLength(255)
+                                ->disabled()
                                 ->required()
-                                ->maxLength(255),
+                                ->dehydrated()
+                                ->unique(Program::class, 'slug', ignoreRecord:true)
+                            ]),
 
                             MarkdownEditor::make('deskripsi')
                                 ->columnSpanFull()
@@ -42,7 +58,6 @@ class ProgramResource extends Resource
 
                             FileUpload::make('image')
                                 ->directory('program'),
-                        ])
                 ])
             ]);
     }
@@ -52,6 +67,8 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('deskripsi')
                     ->searchable(),

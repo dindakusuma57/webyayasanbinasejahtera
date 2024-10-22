@@ -1,29 +1,45 @@
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
 <div>
     <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">
         <h1 class="text-lg font-semibold">Program Yayasan Bina Sejahtera</h1>
     </div>
 
     {{-- PENJELASAN PPDB START --}}
-    <section class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
         <div class="max-w-xl mx-auto">
             @foreach($ppdbs as $ppdb)
             <div class="text-center">
                 <div class="relative flex flex-col items-center">
                     <h1 class="text-4xl font-bold text-[#002500]">{{ $ppdb->judul }}</h1>
-
                 </div>
             </div>
             @endforeach
         </div>
-        <div class="py-10">
-                    <p class="mt-2 text-gray-700 text-justify">{{ $ppdb->deskripsi }}</p>
+
+        <div class="py-5">
+            @php
+                $fullText = $ppdb->deskripsi;
+                $limit = 1000; // Ubah batas sesuai kebutuhan
+                $shortText = strlen($fullText) > $limit ? substr($fullText, 0, $limit) . '...' : $fullText;
+            @endphp
+
+            <p id="short-text" class="mt-2 text-gray-700 text-justify">{{ $shortText }}</p>
+            <p id="more-text" class="hidden mt-2 text-gray-700 text-justify">{{ $fullText }}</p>
         </div>
+
+        <button id="toggle-btn" class="mt-4 text-blue-500 focus:outline-none">Baca Selengkapnya</button>
+        <button id="hide-btn" class="hidden mt-4 text-blue-500 focus:outline-none">Baca Lebih Sedikit</button>
     </section>
     {{-- PENJELASAN PPDB END --}}
 
     {{-- Unit ppdb start --}}
     <section class="py-20 bg-[#6B9B55]">
-        <div class="max-w-xl mx-auto">
+        <div data-aos="fade-up" class="max-w-xl mx-auto">
             <div class="text-center">
                 <div class="relative flex flex-col items-center">
                     <h1 class="text-4xl font-bold dark:text-gray-200">PPDB Yayasan Bina Sejahtera Tahun Ajaran 2024/2025</h1>
@@ -39,7 +55,7 @@
             </div>
         </div>
 
-        <div class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
+        <div data-aos="fade-up" class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
                 @foreach($ppdbdetails as $ppdbdetail) <!-- Corrected variable name here -->
                     <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 h-40 flex items-center justify-center transition-transform transform hover:scale-105 hover:bg-[#002500] group">
@@ -55,3 +71,24 @@
     </section>
     {{-- Unit ppdb End --}}
 </div>
+
+<script>
+    const moreTextEl = document.getElementById('more-text');
+    const shortTextEl = document.getElementById('short-text');
+    const toggleBtnEl = document.getElementById('toggle-btn');
+    const hideBtnEl = document.getElementById('hide-btn');
+
+    toggleBtnEl.addEventListener('click', () => {
+        shortTextEl.classList.add('hidden'); // Sembunyikan teks pendek
+        moreTextEl.classList.remove('hidden'); // Tampilkan teks panjang
+        toggleBtnEl.classList.add('hidden'); // Sembunyikan tombol Read More
+        hideBtnEl.classList.remove('hidden'); // Tampilkan tombol Hide
+    });
+
+    hideBtnEl.addEventListener('click', () => {
+        shortTextEl.classList.remove('hidden'); // Tampilkan teks pendek
+        moreTextEl.classList.add('hidden'); // Sembunyikan teks panjang
+        toggleBtnEl.classList.remove('hidden'); // Tampilkan tombol Read More
+        hideBtnEl.classList.add('hidden'); // Sembunyikan tombol Hide
+    });
+</script>

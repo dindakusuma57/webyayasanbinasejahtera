@@ -51,6 +51,10 @@ class UnitResource extends Resource
                             TextInput::make('link')
                                 ->required()
                                 ->maxLength(255),
+
+                            FileUpload::make('image')
+                                ->image()
+                                ->directory('unit'),
                         ])
                 ])
             ]);
@@ -68,6 +72,10 @@ class UnitResource extends Resource
                 ->searchable(),
             Tables\Columns\TextColumn::make('link')
                 ->searchable(),
+            ImageColumn::make('image')
+                ->label('Image')
+                ->width(100)
+                ->height(100),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

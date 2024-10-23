@@ -16,7 +16,7 @@
 
             @foreach($visis as $visi)
                 @php
-                    $visiPoints = explode("\n", $visi->deskripsi); // Memisahkan berdasarkan newline
+                    $visiPoints = explode("\n", $visi->deskripsi);
                 @endphp
 
                 <ul class="list-disc pl-5">
@@ -42,7 +42,7 @@
 
             @foreach($misis as $misi)
                 @php
-                    $misiPoints = explode("\n", $misi->deskripsi); // Memisahkan berdasarkan newline
+                    $misiPoints = explode("\n", $misi->deskripsi); 
                 @endphp
 
                 <ul class="list-disc pl-5">

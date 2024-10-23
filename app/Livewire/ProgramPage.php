@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use Livewire\WithPagination; // Import WithPagination
+use Livewire\WithPagination;
 use App\Models\Program;
 use Livewire\Attributes\Title;
 
@@ -11,11 +11,10 @@ use Livewire\Attributes\Title;
 
 class ProgramPage extends Component
 {
-    use WithPagination; // Tambahkan trait ini untuk mendukung pagination di Livewire
+    use WithPagination;
 
     public function render()
     {
-        // Ambil 8 program per halaman menggunakan paginate()
         $programs = Program::paginate(6);
 
         return view('livewire.program-page', [

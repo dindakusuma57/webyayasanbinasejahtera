@@ -18,7 +18,7 @@
 
                     <div class="py-5 md:w-1/3 md:pl-6">
                         @foreach($strukturs as $struktur)
-                            @if(!empty($struktur->image)) <!-- Memeriksa apakah gambar tidak kosong -->
+                            @if(!empty($struktur->image)) 
                                 <img src="{{ asset('storage/' . $struktur->image) }}" alt="Struktur Yayasan" class="w-full h-auto rounded-lg shadow-lg">
                             @endif
                         @endforeach

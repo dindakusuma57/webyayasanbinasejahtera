@@ -13,7 +13,6 @@ class ProgramDetailPage extends Component
     public $slug;
     public $program;
 
-    // Mount untuk mengambil program berdasarkan slug
     public function mount($slug)
     {
         $this->slug = $slug;

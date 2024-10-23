@@ -25,7 +25,7 @@
         <div class="py-5">
             @php
                 $fullText = $ppdb->deskripsi;
-                $limit = 1000; // Ubah batas sesuai kebutuhan
+                $limit = 1000;
                 $shortText = strlen($fullText) > $limit ? substr($fullText, 0, $limit) . '...' : $fullText;
             @endphp
 
@@ -58,7 +58,7 @@
 
         <div data-aos="fade-up" class="justify-center max-w-6xl px-4 py-4 mx-auto lg:py-0">
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
-                @foreach($ppdbdetails as $ppdbdetail) <!-- Corrected variable name here -->
+                @foreach($ppdbdetails as $ppdbdetail)
                     <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 h-40 flex items-center justify-center transition-transform transform hover:scale-105 hover:bg-[#002500] group">
                         <div class="p-5 text-center">
                             <a href="{{ $ppdbdetail->link }}" class="text-1xl font-bold tracking-tight text-gray-900 dark:text-gray-300 group-hover:text-[#fff]">
@@ -80,16 +80,16 @@
     const hideBtnEl = document.getElementById('hide-btn');
 
     toggleBtnEl.addEventListener('click', () => {
-        shortTextEl.classList.add('hidden'); // Sembunyikan teks pendek
-        moreTextEl.classList.remove('hidden'); // Tampilkan teks panjang
-        toggleBtnEl.classList.add('hidden'); // Sembunyikan tombol Read More
-        hideBtnEl.classList.remove('hidden'); // Tampilkan tombol Hide
+        shortTextEl.classList.add('hidden');
+        moreTextEl.classList.remove('hidden');
+        toggleBtnEl.classList.add('hidden');
+        hideBtnEl.classList.remove('hidden');
     });
 
     hideBtnEl.addEventListener('click', () => {
-        shortTextEl.classList.remove('hidden'); // Tampilkan teks pendek
-        moreTextEl.classList.add('hidden'); // Sembunyikan teks panjang
-        toggleBtnEl.classList.remove('hidden'); // Tampilkan tombol Read More
-        hideBtnEl.classList.add('hidden'); // Sembunyikan tombol Hide
+        shortTextEl.classList.remove('hidden');
+        moreTextEl.classList.add('hidden');
+        toggleBtnEl.classList.remove('hidden');
+        hideBtnEl.classList.add('hidden'); 
     });
 </script>

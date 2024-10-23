@@ -20,9 +20,9 @@ class Kepengurusan extends Model
     public function setImageAttribute($value)
     {
         if ($value instanceof UploadedFile) {
-            $this->attributes['image'] = $value->store('images', 'public'); // Store the uploaded file
+            $this->attributes['image'] = $value->store('images', 'public');
         } else {
-            $this->attributes['image'] = $value; // Handle string URL/path
+            $this->attributes['image'] = $value; 
         }
     }
 

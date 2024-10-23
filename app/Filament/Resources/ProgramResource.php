@@ -57,7 +57,10 @@ class ProgramResource extends Resource
                                 ->fileAttachmentsDirectory('program'),
 
                             FileUpload::make('image')
-                                ->directory('program'),
+                                ->directory('program')
+                                ->multiple()
+                                ->maxFiles(5)
+                                ->reorderable(),
                 ])
             ]);
     }

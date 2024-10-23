@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Sejarah; // Make sure to import your model
+use App\Models\Sejarah;
 
 
 class SejarahPage extends Component
@@ -12,7 +12,7 @@ class SejarahPage extends Component
 
     public function mount()
     {
-        $this->sejarahs = Sejarah::all(); // Fetch all records from the sejarahs table
+        $this->sejarahs = Sejarah::all();
     }
 
     public function render()

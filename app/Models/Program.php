@@ -14,4 +14,8 @@ class Program extends Model
         'deskripsi',
         'slug',
         'image'];
+
+    protected $casts = [
+        'image' => 'array',
+    ];
 }

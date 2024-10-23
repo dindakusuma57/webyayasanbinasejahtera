@@ -13,7 +13,7 @@ class PpdbPage extends Component
 
     public function mount()
     {
-        $this->ppdbs = Ppdb::all(); // Fetch all records from the sejarahs table
+        $this->ppdbs = Ppdb::all();
         $this->ppdbdetails = Ppdbdetail::all();
     }
 

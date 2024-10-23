@@ -23,13 +23,12 @@
 
         <div class="md:w-1/3 md:pl-6">
             @foreach($sejarahs as $sejarah)
-                @if(!empty($sejarah->image)) <!-- Memeriksa apakah gambar tidak kosong -->
+                @if(!empty($sejarah->image))
                     <img src="{{ asset('storage/' . $sejarah->image) }}" alt="Sejarah Yayasan" class="w-full h-auto rounded-lg shadow-lg">
                 @endif
             @endforeach
         </div>
     </section>
-
     {{-- SEJARAH END --}}
 
     {{-- SEJARAH KEPENGURUSAN START --}}
@@ -43,7 +42,6 @@
                     Sejarah<span class="text-[#002500]"> Kepengurusan</span>
                 </h1>
 
-                <!-- Container for categories -->
                 <div class="mt-8 p-6 bg-white rounded-full border-2 max-w-4sm mx-auto">
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         <div class="p-4 bg-[#f0f0f0] rounded-full text-center">
@@ -58,7 +56,6 @@
                     </div>
                 </div>
 
-                <!-- New Container for Title, Description, and Image -->
                 <div class="mt-12 p-6 bg-white rounded-lg border-2 shadow-lg max-w-4sm mx-auto">
                     <h2 class="text-[#6B9B55] text-3xl font-bold text-left">Tahun</h2>
                     <p class="mt-4 text-gray-700 text-center">
@@ -72,9 +69,6 @@
             </div>
         </div>
     </section>
-
-
-
     {{-- SEJARAH END --}}
 
 </div>

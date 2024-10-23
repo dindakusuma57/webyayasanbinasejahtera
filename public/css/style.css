@@ -19,18 +19,18 @@
     }
 
     .card-image {
-        transition: transform 0.3s ease, opacity 0.3s ease; /* Mengatur transisi untuk efek zoom dan opasitas */
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .card-image:hover {
-        transform: scale(1.05); /* Memperbesar gambar saat hover */
-        opacity: 0.8; /* Mengurangi opasitas saat hover */
+        transform: scale(1.05);
+        opacity: 0.8;
     }
 
     .fixed-image {
-        height: 300px; /* Atur tinggi yang sama untuk semua gambar */
-        width: 100%; /* Memastikan lebar gambar memenuhi kontainer */
-        object-fit: cover; /* Memastikan gambar tidak terdistorsi dan tetap dalam proporsi */
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
     }
 
 
@@ -41,15 +41,15 @@
       }
 
       #toggle-btn, #hide-btn {
-        background-color: #6B9B55; /* Ganti dengan warna yang diinginkan */
-        padding: 10px 20px; /* Menambah padding untuk tombol */
-        border: none; /* Menghapus border default */
-        border-radius: 5px; /* Menambah sudut melengkung */
-        cursor: pointer; /* Mengubah cursor saat hover */
+        background-color: #6B9B55;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
     #toggle-btn:hover, #hide-btn:hover {
-        background-color: #002500; /* Warna saat hover */
+        background-color: #002500; 
     }
 
     @layer components {
@@ -58,5 +58,5 @@
         }
       }
 
-      
+
 

@@ -36,12 +36,12 @@ class ProgramResource extends Resource
                     Grid::make()
                         ->schema([
                             TextInput::make('judul')
-    ->required()
-    ->maxLength(255)
-    ->live(onBlur:true)
-    ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) =>
-        $operation === 'create' ? $set('slug', Str::slug($state)) : null
-    ),
+                                ->required()
+                                ->maxLength(255)
+                                ->live(onBlur:true)
+                                ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) =>
+                                    $operation === 'create' ? $set('slug', Str::slug($state)) : null
+                                ),
 
 
                             TextInput::make('slug')
@@ -49,7 +49,11 @@ class ProgramResource extends Resource
                                 ->disabled()
                                 ->required()
                                 ->dehydrated()
-                                ->unique(Program::class, 'slug', ignoreRecord:true)
+                                ->unique(Program::class, 'slug', ignoreRecord:true),
+
+                            TextInput::make('keterangan')
+                                ->maxLength(255)
+                                ->required()
                             ]),
 
                             MarkdownEditor::make('deskripsi')

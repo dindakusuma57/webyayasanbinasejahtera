@@ -31,7 +31,7 @@
                             <a href="{{ route('program.show', ['slug' => $program->slug]) }}">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $program->judul }}</h5>
                             </a>
-                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-wrap break-words">{{ Str::limit($program->deskripsi, 100) }}</p>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 overflow-wrap break-words">{{ Str::limit($program->keterangan, 100) }}</p>
                         </div>
                     </div>
                 @endforeach

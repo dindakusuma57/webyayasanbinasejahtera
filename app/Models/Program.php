@@ -11,6 +11,7 @@ class Program extends Model
 
     protected $fillable = [
         'judul',
+        'keterangan',
         'deskripsi',
         'slug',
         'image'];

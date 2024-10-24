@@ -9,10 +9,20 @@
     <div class="bg-[#6B9B55] p-4 text-white text-center">
         <h1 class="text-lg font-semibold">Visi dan Misi</h1>
     </div>
+
     {{-- VISI START --}}
-    <section class="p-6 bg-white text-gray-800 flex flex-col md:flex-row">
+    <section class="p-10 bg-white text-gray-800 flex flex-col md:flex-row">
         <div data-aos="fade-up" class="md:w-2/3">
-            <h2 class="text-xl font-bold mb-4">Visi Yayasan Bina Sejahtera</h2>
+            <div class="text-center">
+                <div class="relative flex flex-col items-center">
+                    <h1 class="text-5xl font-bold dark:text-[#002500]">Visi<span class="text-[#6B9B55]"> Yayasan Bina Sejahtera</span></h1>
+                    <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
+                        <div class="flex-1 h-2" style="background-color: #A3C1DA;"></div>
+                        <div class="flex-1 h-2" style="background-color: #6B9B55;"></div>
+                        <div class="flex-1 h-2" style="background-color: #002500;"></div>
+                    </div>
+                </div>
+            </div>
 
             @foreach($visis as $visi)
                 @php
@@ -36,13 +46,22 @@
         </div>
     </section>
 
-    <section class="p-6 bg-white text-gray-800 flex flex-col md:flex-row">
+    <section class="p-10 bg-[#6B9B55] text-white flex flex-col md:flex-row">
         <div data-aos="fade-up" class="md:w-2/3">
-            <h2 class="text-xl font-bold mb-4">Misi Yayasan Bina Sejahtera</h2>
+            <div class="text-center">
+                <div class="relative flex flex-col items-center">
+                    <h1 class="text-5xl font-bold dark:text-gray-200">Misi<span class="text-[#002500]"> Yayasan Bina Sejahtera</span></h1>
+                    <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
+                        <div class="flex-1 h-2" style="background-color: #A3C1DA;"></div>
+                        <div class="flex-1 h-2" style="background-color: #6B9B55;"></div>
+                        <div class="flex-1 h-2" style="background-color: #002500;"></div>
+                    </div>
+                </div>
+            </div>
 
             @foreach($misis as $misi)
                 @php
-                    $misiPoints = explode("\n", $misi->deskripsi); 
+                    $misiPoints = explode("\n", $misi->deskripsi);
                 @endphp
 
                 <ul class="list-disc pl-5">

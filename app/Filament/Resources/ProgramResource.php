@@ -43,7 +43,6 @@ class ProgramResource extends Resource
                                     $operation === 'create' ? $set('slug', Str::slug($state)) : null
                                 ),
 
-
                             TextInput::make('slug')
                                 ->maxLength(255)
                                 ->disabled()
@@ -74,6 +73,8 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('judul')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('keterangan')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),

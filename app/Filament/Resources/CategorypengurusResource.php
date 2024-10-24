@@ -10,9 +10,11 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Toggle;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -35,8 +37,23 @@ class CategorypengurusResource extends Resource
                         ->schema([
                             TextInput::make('tahun')
                                 ->required()
-                                ->maxLength(255),
-                        ])
+                                ->maxLength(255)
+                                ->live(onBlur:true)
+                                ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) =>
+                                    $operation === 'create' ? $set('slug', Str::slug($state)) : null
+                                ),
+
+                            TextInput::make('slug')
+                                ->maxLength(255)
+                                ->disabled()
+                                ->required()
+                                ->dehydrated()
+                                ->unique(Categorypengurus::class, 'slug', ignoreRecord:true),
+                        ]),
+
+                        Toggle::make('is_active')
+                        ->required()
+                        ->default(true),
                 ])
             ]);
     }
@@ -47,6 +64,10 @@ class CategorypengurusResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('tahun')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -4,7 +4,7 @@
       <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
         <div class="col-span-full lg:col-span-1">
 
-                <img src="image/logo.png" alt="Yayasan Logo" class="h-8 w-auto mr-2">
+                <img src="image/logofix.png" alt="Yayasan Logo" class="h-8 w-auto mr-2">
 
 
         </div>

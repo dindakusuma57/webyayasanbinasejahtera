@@ -90,6 +90,6 @@
         shortTextEl.classList.remove('hidden');
         moreTextEl.classList.add('hidden');
         toggleBtnEl.classList.remove('hidden');
-        hideBtnEl.classList.add('hidden'); 
+        hideBtnEl.classList.add('hidden');
     });
 </script>

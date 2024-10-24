@@ -17,7 +17,6 @@ Route::get('/visimisi', VisimisiPage::class);
 Route::get('/organisasi', OrganisasiPage::class);
 Route::get('/program', ProgramPage::class)->name('program.index');
 Route::get('/program/{slug}', ProgramDetailPage::class)->name('program.show');
-// Route::get('/program', ProgramPage::class);
 Route::get('/ppdb', PpdbPage::class);
 Route::get('/kontak', KontakPage::class);
 

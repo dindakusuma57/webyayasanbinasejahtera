@@ -55,7 +55,7 @@
         <div class="pt-12 bg-gray-50 dark:bg-gray-900 sm:pt-20">
           <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto text-center">
-              <h2 class="text-3xl font-extrabold leading-9 text-gray-900 dark:text-white sm:text-4xl sm:leading-10">
+              <h2 class="text-3xl font-extrabold leading-9 text-[#002500] dark:text-white sm:text-4xl sm:leading-10">
                 Trusted by developers
               </h2>
               <p class="mt-3 text-xl leading-7 text-gray-600 dark:text-gray-400 sm:mt-4">
@@ -124,7 +124,7 @@
             </div>
             <div class="flex flex-wrap items-center justify-between">
                 <div class="w-full md:w-1/2 text-left">
-                    <p class="mb-12 text-base text-gray-500">
+                    <p class="mb-12 text-base text-black-500">
                         {{ $tentang ? $tentang->deskripsi : 'Deskripsi tidak tersedia.' }}
                     </p>
                 </div>

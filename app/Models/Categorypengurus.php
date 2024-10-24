@@ -9,7 +9,7 @@ class Categorypengurus extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tahun'];
+    protected $fillable = ['tahun','slug','is_active'];
 
     public function kepengurusans() {
         return $this->hasMany(Kepengurusan::class);

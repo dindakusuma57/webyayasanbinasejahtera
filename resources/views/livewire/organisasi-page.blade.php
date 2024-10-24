@@ -16,9 +16,9 @@
                 <div class="relative flex flex-col items-center">
                     <h1 class="text-4xl font-bold text-[#002500]">{{ $struktur->judul }}</h1>
 
-                    <div class="py-5 md:w-1/3 md:pl-6">
+                    <div class="py-5 md:30 md:pl-6">
                         @foreach($strukturs as $struktur)
-                            @if(!empty($struktur->image)) 
+                            @if(!empty($struktur->image))
                                 <img src="{{ asset('storage/' . $struktur->image) }}" alt="Struktur Yayasan" class="w-full h-auto rounded-lg shadow-lg">
                             @endif
                         @endforeach

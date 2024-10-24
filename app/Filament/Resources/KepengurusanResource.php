@@ -15,8 +15,14 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Toggle;
+use Illuminate\Support\Str;
+use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use SebastianBergmann\CodeCoverage\Driver\Selector;
 
 class KepengurusanResource extends Resource
 {
@@ -33,23 +39,43 @@ class KepengurusanResource extends Resource
         return $form
             ->schema([
                 Group::make()->schema([
-                    Section::make('Kepengurusan Information')->schema([
-                        TextInput::make('judul')
+                    Section::make('Associations')->schema([
+                        Select::make('categorypengurus_id')
                             ->required()
-                            ->maxLength(255),
+                            ->searchable()
+                            ->preload()
+                            ->relationship('categorypengurus','tahun'),
+                    ])
+
+                ])-> columnSpan(2),
+
+                Section::make('Kepengurusan Information')->schema([
+                    TextInput::make('judul')
+                            ->required()
+                            ->maxLength(255)
+                            ->live(onBlur:true)
+                            ->afterStateUpdated(fn (string $operation, $state, \Filament\Forms\Set $set) =>
+                                $operation === 'create' ? $set('slug', Str::slug($state)) : null
+                            ),
+
+                        TextInput::make('slug')
+                            ->maxLength(255)
+                            ->disabled()
+                            ->required()
+                            ->dehydrated()
+                            ->unique(Kepengurusan::class, 'slug', ignoreRecord:true),
+
+                        FileUpload::make('image')
+                            ->image()
+                            ->directory('tentang'),
 
                         MarkdownEditor::make('deskripsi')
                             ->columnSpanFull()
                             ->fileAttachmentsDirectory('kepengurusans'),
-                    ])
-                ])-> columnSpan(2),
 
-                Section::make('Associations')->schema([
-                    Select::make('categorypengurus')
-                        ->required()
-                        ->searchable()
-                        ->preload()
-                        ->relationship('category', 'name')
+                        Toggle::make('is_active')
+                            ->required()
+                            ->default(true),
                 ])
             ]);
     }
@@ -58,12 +84,21 @@ class KepengurusanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('categorypengurus_id')
+                Tables\Columns\TextColumn::make('categorypengurus.tahun')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('judul')
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('slug')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('deskripsi')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('is_active')
+                    ->boolean(),
+                ImageColumn::make('image')
+                    ->label('Image')
+                    ->width(100)
+                    ->height(100),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -74,7 +109,8 @@ class KepengurusanResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('categorypengurus')
+                ->relationship('categorypengurus', 'tahun'),
             ])
             ->actions([
                 Tables\Actions\ActionGroup::make([

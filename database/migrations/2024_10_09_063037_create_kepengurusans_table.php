@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('kepengurusans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('categorypengurus_id')->constrained('categorypenguruses')->cascadeOnDelete();
+            $table->foreignId('categorypengurus_id')
+                  ->constrained('categorypenguruses')
+                  ->cascadeOnDelete();
             $table->string('judul');
+            $table->string('slug')->unique();
             $table->longText('deskripsi')->nullable();
             $table->string('image')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

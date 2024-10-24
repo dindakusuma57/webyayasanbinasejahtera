@@ -11,23 +11,16 @@ class Kepengurusan extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['judul', 'deskripsi', 'image'];
+    protected $fillable = ['categorypengurus_id', 'judul','slug', 'deskripsi', 'image','is_active'];
+
+    protected $casts = [
+        'image' => 'string',
+    ];
 
     public function categorypengurus() {
         return $this->belongsTo(Categorypengurus::class);
     }
 
-    public function setImageAttribute($value)
-    {
-        if ($value instanceof UploadedFile) {
-            $this->attributes['image'] = $value->store('images', 'public');
-        } else {
-            $this->attributes['image'] = $value; 
-        }
-    }
+    
 
-    public function scopeByCategory($query, $categoryId)
-    {
-        return $query->where('categorypengurus_id', $categoryId);
-    }
 }

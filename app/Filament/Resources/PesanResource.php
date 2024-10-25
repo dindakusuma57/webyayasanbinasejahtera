@@ -50,10 +50,8 @@ class PesanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama_depan')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('nama_belakang')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('fullname')
+                    ->label('Nama Lengkap'),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_telp')
@@ -91,6 +89,16 @@ class PesanResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function getNavigationBadgeColor(): string|array|null
+    {
+        return static::getModel()::count() > 10 ? 'success' : 'danger';
     }
 
     public static function getPages(): array

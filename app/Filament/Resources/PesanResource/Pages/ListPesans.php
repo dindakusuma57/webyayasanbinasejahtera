@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Filament\Resources\PesanResource\Pages;
-
+use App\Filament\Resources\PesanResource\Widgets\PesanStats;
 use App\Filament\Resources\PesanResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -14,6 +14,12 @@ class ListPesans extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array {
+        return [
+            PesanStats::class
         ];
     }
 }

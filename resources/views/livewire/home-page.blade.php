@@ -110,30 +110,50 @@
       {{-- Statistik Pengunjung end --}}
 
       {{-- Tentang section start --}}
-      <section class="py-10">
-        <div data-aos="fade-up" class="max-w-6xl mx-auto">
-            <div class="text-center">
-                <div class="relative flex flex-col items-center">
-                    <h1 class="text-5xl font-bold dark:text-gray-200">Tentang<span class="text-[#6B9B55]"> Yayasan Bina Sejahtera</span></h1>
-                    <div class="flex w-40 mt-2 mb-6 overflow-hidden rounded">
-                        <div class="flex-1 h-2" style="background-color: #A3C1DA;"></div>
-                        <div class="flex-1 h-2" style="background-color: #6B9B55;"></div>
-                        <div class="flex-1 h-2" style="background-color: #002500;"></div>
+      <section class="py-10 relative xl:mr-0 lg:mr-5 mr-0">
+        <div data-aos="fade-up" class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
+            <div class="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
+                <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
+                    <div class="w-full flex-col justify-center items-start gap-8 flex">
+                        <div class="flex-col justify-start lg:items-start items-center gap-4 flex">
+                            <h6 class="text-gray-400 text-base font-normal leading-relaxed">Tentang Kami</h6>
+                            <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
+                                <h2
+                                    class="text-[#002500] text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
+                                    {{ $tentang ? $tentang->judul : 'Judul tidak tersedia.' }}</h2>
+                                <p
+                                    class="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
+                                    {{ $tentang ? $tentang->deskripsi : 'Deskripsi tidak tersedia.' }}</p>
+                            </div>
+                        </div>
+                        <div class="py-10 w-full flex-col justify-center items-start gap-6 flex">
+                            <div class="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
+                                <div
+                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex">
+                                    <h4 class="text-[#002500] text-2xl font-bold font-manrope leading-9">20+ Tahun</h4>
+                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Berkomitmen untuk menciptakan generasi muda yang cerdas, berkarakter, dan siap menghadapi tantangan masa depan.</p>
+                                </div>
+                                <div
+                                    class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex">
+                                    <h4 class="text-[#002500] text-2xl font-bold font-manrope leading-9">6+ Unit Sekolah
+                                    </h4>
+                                    <p class="text-gray-500 text-base font-normal leading-relaxed">Terdiri dari enam unit sekolah, termasuk SMP, SMA, serta SMK 1, SMK 2, SMK 3, dan SMK 4, berkomitmen menciptakan generasi muda yang cerdas dan berkarakter.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex flex-wrap items-center justify-between">
-                <div class="w-full md:w-1/2 text-left">
-                    <p class="mb-12 text-base text-black-500">
-                        {{ $tentang ? $tentang->deskripsi : 'Deskripsi tidak tersedia.' }}
-                    </p>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <img src="{{ $tentang ? asset('storage/' . $tentang->image) : '' }}" alt="Tentang Yayasan" class="w-full h-auto rounded-lg shadow-lg">
+                <div class="w-full lg:justify-start justify-center items-start flex">
+                    <div
+                        class="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
+                        <img class="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
+                        src="{{ $tentang ? asset('storage/' . $tentang->image) : '' }}" alt="Tentang Yayasan" />
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+                                            
 
       {{-- Tentang section end --}}
 
@@ -164,50 +184,49 @@
             "lg": 3
             }
             }' class="relative px-20" data-aos="fade-up">
-            <div class="hs-carousel w-full overflow-hidden rounded-lg">
-                <div class="relative min-h-72 -mx-1">
+        <div class="hs-carousel w-full overflow-hidden rounded-lg">
+            <div class="relative min-h-72 -mx-1">
+                <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 transition-transform duration-700">
+                    @foreach($units as $unit)
+                    <div class="hs-carousel-slide px-1">
+                        <div class="relative group overflow-hidden bg-gray-100 p-6 dark:bg-neutral-900 h-full flex justify-center items-center">
+                            <a href="{{ $unit->link }}" class="absolute inset-0 z-10" style="display: block;"></a> <!-- Link di sini membungkus seluruh card -->
 
-                    <div class="hs-carousel-body absolute top-0 bottom-0 start-0 flex flex-nowrap opacity-0 transition-transform duration-700">
-                        @foreach($units as $unit)
-                        <div class="hs-carousel-slide px-1">
+                            <a href="{{ $unit->link }}" class="relative text-2xl font-bold tracking-tight text-[#002500] z-10 transition-colors duration-300 group-hover:text-gray-200">
+                                {{ $unit->judul }}
+                            </a>
 
-                            <div class="relative group overflow-hidden bg-gray-100 p-6 dark:bg-neutral-900 h-full flex justify-center items-center">
-                                <a href="{{ $unit->link }}" class="relative text-2xl font-bold tracking-tight text-[#002500] z-10 transition-colors duration-300 group-hover:text-gray-200">
-                                    {{ $unit->judul }}
-                                </a>
+                            @if(!empty($unit->image))
+                            <img src="{{ asset('storage/' . $unit->image) }}" alt="Unit Yayasan" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                            @endif
 
-                                @if(!empty($unit->image))
-                                <img src="{{ asset('storage/' . $unit->image) }}" alt="Unit Yayasan" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-                                @endif
-
-                                <div class="absolute inset-0 bg-[#002500] opacity-0 transition-opacity duration-300 group-hover:opacity-80"></div>
-                            </div>
+                            <div class="absolute inset-0 bg-[#002500] opacity-0 transition-opacity duration-300 group-hover:opacity-80"></div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
-
-            <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
-            style="margin-left: 20px">
-                <span class="text-2xl" aria-hidden="true">
-                    <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m15 18-6-6 6-6"></path>
-                    </svg>
-                </span>
-                <span class="sr-only">Previous</span>
-            </button>
-            <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
-            style="margin-right: 20px">
-                <span class="sr-only">Next</span>
-                <span class="text-2xl" aria-hidden="true">
-                    <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m9 18 6-6-6-6"></path>
-                    </svg>
-                </span>
-            </button>
-            <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
         </div>
+        <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 start-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+        style="margin-left: 20px">
+            <span class="text-2xl" aria-hidden="true">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m15 18-6-6 6-6"></path>
+                </svg>
+            </span>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 end-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+        style="margin-right: 20px">
+            <span class="sr-only">Next</span>
+            <span class="text-2xl" aria-hidden="true">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m9 18 6-6-6-6"></path>
+                </svg>
+            </span>
+        </button>
+        <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
+    </div>
     </section>
       {{-- Unit End --}}
 

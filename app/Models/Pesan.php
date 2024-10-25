@@ -11,7 +11,8 @@ class Pesan extends Model
 
     protected $fillable = ['nama_depan','nama_belakang','email','no_telp','pesan'];
 
-    public function getFullNameAttribut() {
+    public function getFullnameAttribute() {
         return "{$this->nama_depan} {$this->nama_belakang}";
     }
+
 }

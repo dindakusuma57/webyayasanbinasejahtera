@@ -11,35 +11,42 @@
     </div>
 
     {{-- PENJELASAN PPDB START --}}
-    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section data-aos="fade-up" class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
         <div class="max-w-xl mx-auto">
-            @foreach($ppdbs as $ppdb)
-            <div class="text-center">
-                <div class="relative flex flex-col items-center">
-                    <h1 class="text-4xl font-bold text-[#002500]">{{ $ppdb->judul }}</h1>
+            @if($ppdbs->isEmpty()) <!-- Memeriksa apakah $ppdbs kosong -->
+                <div class="text-center">
+                    <h1 class="text-4xl font-bold text-[#002500]">Tidak ada PPDB</h1>
                 </div>
-            </div>
-            @endforeach
+            @else
+                @foreach($ppdbs as $ppdb)
+                <div class="text-center">
+                    <div class="relative flex flex-col items-center">
+                        <h1 class="text-4xl font-bold text-[#002500]">{{ $ppdb->judul }}</h1>
+                    </div>
+                </div>
+                @endforeach
+            @endif
         </div>
-
+    
         <div class="py-5">
             @php
-                $fullText = $ppdb->deskripsi;
+                $fullText = $ppdb->deskripsi ?? ''; // Pastikan ini aman jika $ppdb tidak ada
                 $limit = 1000;
                 $shortText = strlen($fullText) > $limit ? substr($fullText, 0, $limit) . '...' : $fullText;
             @endphp
-
+    
             <p id="short-text" class="mt-2 text-gray-700 text-justify">{{ $shortText }}</p>
             <p id="more-text" class="hidden mt-2 text-gray-700 text-justify">{{ $fullText }}</p>
         </div>
-
+    
         <button id="toggle-btn" class="mt-4 text-white focus:outline-none">Baca Selengkapnya</button>
         <button id="hide-btn" class="hidden mt-4 text-white focus:outline-none">Baca Lebih Sedikit</button>
     </section>
+    
     {{-- PENJELASAN PPDB END --}}
 
     {{-- Unit ppdb start --}}
-    <section class="py-20 bg-[#6B9B55]">
+    <section class="py-10 bg-[#6B9B55]">
         <div data-aos="fade-up" class="max-w-xl mx-auto">
             <div class="text-center">
                 <div class="relative flex flex-col items-center">
@@ -60,15 +67,15 @@
             <div class="grid grid-cols-1 gap-6 lg:grid-cols-4 md:grid-cols-2">
                 @foreach($ppdbdetails as $ppdbdetail)
                     <div class="bg-white rounded-lg shadow-md dark:bg-gray-800 h-40 flex items-center justify-center transition-transform transform hover:scale-105 hover:bg-[#002500] group">
-                        <div class="p-5 text-center">
-                            <a href="{{ $ppdbdetail->link }}" class="text-1xl font-bold tracking-tight text-gray-900 dark:text-gray-300 group-hover:text-[#fff]">
+                        <a href="{{ $ppdbdetail->link }}" class="flex flex-col items-center justify-center w-full h-full p-5 text-center">
+                            <span class="text-1xl font-bold tracking-tight text-gray-900 dark:text-gray-300 group-hover:text-[#fff]">
                                 {{ $ppdbdetail->judul }}
-                            </a>
-                        </div>
+                            </span>
+                        </a>
                     </div>
                 @endforeach
             </div>
-        </div>
+        </div>        
     </section>
     {{-- Unit ppdb End --}}
 </div>

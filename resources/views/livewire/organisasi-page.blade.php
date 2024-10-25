@@ -10,12 +10,11 @@
     </div>
 
     <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
-        <div class="max-w-xl mx-auto">
+        <div class="max-w-full mx-auto">
             @foreach($strukturs as $struktur)
             <div class="text-center">
                 <div class="relative flex flex-col items-center">
-                    <h1 class="text-4xl font-bold text-[#002500]">{{ $struktur->judul }}</h1>
-
+                    {{-- <h1 class="text-4xl font-bold text-[#002500]">{{ $struktur->judul }}</h1>  --}}
                     <div class="py-5 md:30 md:pl-6">
                         @foreach($strukturs as $struktur)
                             @if(!empty($struktur->image))
@@ -27,7 +26,5 @@
             </div>
             @endforeach
         </div>
-
-
     </section>
 </div>

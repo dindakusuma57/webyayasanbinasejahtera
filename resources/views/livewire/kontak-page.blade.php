@@ -61,50 +61,54 @@
             </div>
             <div class="-mt-20 mb-6 px-4 py-10">
                 <div class="mx-auto max-w-6xl shadow-lg p-8 relative bg-white rounded-lg">
-                    @if (session()->has('message'))
-                        <div style="color: green;">
-                            {{ session('message') }}
-                        </div>
-                    @endif
-                    
-                    <form wire:submit.prevent="placePesan" class="mt-8 grid sm:grid-cols-2 gap-6">
+
+                    <form id="my-form" action="https://formspree.io/f/myzykjlg" method="POST" class="mt-8 grid sm:grid-cols-2 gap-6">
                         <div>
-                            <input wire:model='nama_depan' type='text' placeholder='Nama Depan'
+                            <label for="nama_depan" class="block text-sm">Nama Depan:</label>
+                            <input wire:model='nama_depan' type='text' id="nama_depan" name="nama_depan" placeholder='Nama Depan' required
                                 class="w-full rounded-lg py-2.5 px-4 border border-gray-300 text-sm outline-[#6B9B55]" />
                             @error('nama_depan') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+
                         <div>
-                            <input wire:model='nama_belakang' type='text' placeholder='Nama Belakang'
+                            <label for="nama_belakang" class="block text-sm">Nama Belakang:</label>
+                            <input wire:model='nama_belakang' type='text' id="nama_belakang" name="nama_belakang" placeholder='Nama Belakang' required
                                 class="w-full rounded-lg py-2.5 px-4 border border-gray-300 text-sm outline-[#6B9B55]" />
                             @error('nama_belakang') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+
                         <div>
-                            <input wire:model='email' type='email' placeholder='Email'
+                            <label for="email" class="block text-sm">Email:</label>
+                            <input wire:model='email' type='email' id="email" name="email" placeholder='Email' required
                                 class="w-full rounded-lg py-2.5 px-4 border border-gray-300 text-sm outline-[#6B9B55]" />
                             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+
                         <div>
-                            <input wire:model='no_telp' type='tel' placeholder='Nomor Telepon'
+                            <label for="no_telp" class="block text-sm">Nomor Telepon:</label>
+                            <input wire:model='no_telp' type='tel' id="no_telp" name="no_telp" placeholder='Nomor Telepon' required
                                 class="w-full rounded-lg py-2.5 px-4 border border-gray-300 text-sm outline-[#6B9B55]" />
                             @error('no_telp') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+
                         <div>
-                            <textarea wire:model='pesan' placeholder='Pesan' rows="6"
+                            <label for="pesan" class="block text-sm">Pesan:</label>
+                            <textarea wire:model='pesan' id="pesan" name="message" placeholder='Pesan' rows="6" required
                                 class="col-span-full w-full rounded-lg px-4 border border-gray-300 text-sm pt-3 outline-[#6B9B55]"></textarea>
                             @error('pesan') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
+
                         <div class="flex items-center col-span-full">
-                            <input id="checkbox1" type="checkbox" class="w-4 h-4 mr-3" />
+                            <input id="checkbox1" type="checkbox" wire:model="setuju" required class="w-4 h-4 mr-3" />
                             <label for="checkbox1" class="text-sm text-gray-400">Saya setuju dengan <a href="javascript:void(0);" class="underline">Syarat dan Ketentuan</a> serta <a href="javascript:void(0);" class="underline">Kebijakan Privasi</a></label>
                         </div>
 
-                        <button type="submit"
+                        <button id="my-form-button" type="submit"
                             class="text-white w-max bg-[#6B9B55] hover:bg-[#002500] rounded-lg text-sm px-6 py-3 mt-4 tracking-wide">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill='#fff' class="mr-2 inline" viewBox="0 0 548.244 548.244">
-                                <path fill-rule="evenodd" d="M392.19 156.054 211.268 281.667 22.032 218.58C8.823 214.168-.076 201.775 0 187.852c.077-13.923 9.078-26.24 22.338-30.498L506.15 1.549c11.5-3.697 24.123-.663 32.666 7.88 8.542 8.543 11.577 21.165 7.879 32.666L390.89 525.906c-4.258 13.26-16.575 22.261-30.498 22.338-13.923.076-26.316-8.823-30.728-22.032l-63.393-190.153z" clip-rule="evenodd" />
-                            </svg>
                             Kirim Pesan
                         </button>
+
+                        <p id="my-form-status"></p>
                     </form>
                 </div>
             </div>
@@ -112,3 +116,36 @@
     </section>
     {{-- FORM CONTACT END --}}
 </div>
+
+<script>
+    var form = document.getElementById("my-form");
+
+    async function handleSubmit(event) {
+      event.preventDefault();
+      var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          status.innerHTML = "Thanks for your submission!";
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+            } else {
+              status.innerHTML = "Oops! There was a problem submitting your form"
+            }
+          })
+        }
+      }).catch(error => {
+        status.innerHTML = "Oops! There was a problem submitting your form"
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+  </script>

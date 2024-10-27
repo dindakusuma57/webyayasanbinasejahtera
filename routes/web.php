@@ -21,3 +21,7 @@ Route::get('/ppdb', PpdbPage::class);
 Route::get('/kontak', KontakPage::class);
 
 
+Route::post('/kontak', [KontakPage::class, 'store']);
+
+
+

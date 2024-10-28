@@ -50,7 +50,7 @@
       {{-- Hero end --}}
 
       {{-- Statistik Pengunjung Start --}}
-      <section>
+      {{-- <section>
       <div data-aos="fade-up" >
         <div class="pt-12 bg-gray-50 dark:bg-gray-900 sm:pt-20">
           <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
@@ -106,7 +106,7 @@
           </div>
         </div>
       </div>
-      </section>
+      </section> --}}
       {{-- Statistik Pengunjung end --}}
 
       {{-- Tentang section start --}}
@@ -116,7 +116,7 @@
                 <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                     <div class="w-full flex-col justify-center items-start gap-8 flex">
                         <div class="flex-col justify-start lg:items-start items-center gap-4 flex">
-                            <h6 class="text-gray-400 text-base font-normal leading-relaxed">Tentang Kami</h6>
+                            {{-- <h6 class="text-gray-400 text-base font-normal leading-relaxed">Tentang Kami</h6> --}}
                             <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
                                 <h2
                                     class="text-[#002500] text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
@@ -153,7 +153,7 @@
             </div>
         </div>
     </section>
-                                            
+
 
       {{-- Tentang section end --}}
 

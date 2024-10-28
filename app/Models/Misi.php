@@ -10,4 +10,11 @@ class Misi extends Model
     use HasFactory;
 
     protected $fillable = ['judul', 'deskripsi', 'image'];
+
+    protected function casts(): array
+    {
+        return [
+            'deskripsi' => 'array',
+        ];
+    }
 }

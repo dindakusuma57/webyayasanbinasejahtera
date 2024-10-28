@@ -16,6 +16,8 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -40,15 +42,16 @@ class MisiResource extends Resource
                                 ->required()
                                 ->maxLength(255),
 
-                            MarkdownEditor::make('deskripsi')
-                                ->columnSpanFull()
-                                ->fileAttachmentsDirectory('visi'),
+                                TextInput::make('deskripsi')
+                                ->required()
+                                ->maxLength(255),
 
                             FileUpload::make('image')
                                 ->directory('visi'),
                         ])
-                ])
-            ]);
+                        ]),
+
+                ]);
     }
 
     public static function table(Table $table): Table

@@ -130,7 +130,7 @@
                             <div class="w-full justify-start items-center gap-8 grid md:grid-cols-2 grid-cols-1">
                                 <div
                                     class="w-full h-full p-3.5 rounded-xl border border-gray-200 hover:border-gray-400 transition-all duration-700 ease-in-out flex-col justify-start items-start gap-2.5 inline-flex">
-                                    <h4 class="text-[#002500] text-2xl font-bold font-manrope leading-9">20+ Tahun</h4>
+                                    <h4 class="text-[#002500] text-2xl font-bold font-manrope leading-9">40+ Tahun</h4>
                                     <p class="text-gray-500 text-base font-normal leading-relaxed">Berkomitmen untuk menciptakan generasi muda yang cerdas, berkarakter, dan siap menghadapi tantangan masa depan.</p>
                                 </div>
                                 <div
@@ -153,8 +153,6 @@
             </div>
         </div>
     </section>
-
-
       {{-- Tentang section end --}}
 
       {{-- Unit start --}}

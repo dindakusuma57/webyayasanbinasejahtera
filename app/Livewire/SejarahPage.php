@@ -5,20 +5,20 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Sejarah;
 use App\Models\Kepengurusan;
+use Livewire\Attributes\Title;
 
+#[Title('Sejarah - Yayasan Bina Sejahtera')]
 class SejarahPage extends Component
 {
     public $sejarahs;
     public $kepengurusans;
-    public $selectedCategoryId; // Menyimpan ID kategori yang dipilih
+    public $selectedCategoryId;
 
     public function mount($id = null)
     {
-        // Mengambil semua sejarah dan kepengurusan
         $this->sejarahs = Sejarah::all();
         $this->kepengurusans = Kepengurusan::all();
 
-        // Jika ada ID kategori, ambil data kepengurusan sesuai kategori
         if ($id) {
             $this->kepengurusans = Kepengurusan::where('categorypengurus_id', $id)->get();
         }

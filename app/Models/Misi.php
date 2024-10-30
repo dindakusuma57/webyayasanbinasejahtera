@@ -11,10 +11,5 @@ class Misi extends Model
 
     protected $fillable = ['judul', 'deskripsi', 'image'];
 
-    protected function casts(): array
-    {
-        return [
-            'deskripsi' => 'array',
-        ];
-    }
+
 }

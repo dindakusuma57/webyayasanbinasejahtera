@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\KontakResource\Pages;
-use App\Filament\Resources\KontakResource\RelationManagers;
 use App\Models\Kontak;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,10 +10,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Grid;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class KontakResource extends Resource
 {
@@ -30,17 +27,27 @@ class KontakResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('no_telp')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('sosmed')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('map')
-                    ->required()
-                    ->maxLength(255),
+                Section::make([
+                    Grid::make()
+                        ->schema([
+                            MarkdownEditor::make('alamat')
+                                ->columnSpanFull(),
+
+                            MarkdownEditor::make('email')
+                                ->required()
+                                ->columnSpanFull(),
+
+                            MarkdownEditor::make('no_telp')
+                                ->required()
+                                ->columnSpanFull(),
+
+                            MarkdownEditor::make('sosmed')
+                                ->columnSpanFull(),
+
+                            MarkdownEditor::make('map')
+                                ->columnSpanFull(),
+                        ]),
+                ]),
             ]);
     }
 
@@ -48,6 +55,8 @@ class KontakResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('alamat')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_telp')
@@ -65,15 +74,12 @@ class KontakResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
-                //
-            ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -84,9 +90,7 @@ class KontakResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

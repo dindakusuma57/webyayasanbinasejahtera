@@ -11,9 +11,9 @@
     </div>
 
     {{-- PENJELASAN PPDB START --}}
-    <section data-aos="fade-up" class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
         <div class="max-w-xl mx-auto">
-            @if($ppdbs->isEmpty()) <!-- Memeriksa apakah $ppdbs kosong -->
+            @if($ppdbs->isEmpty())
                 <div class="text-center">
                     <h1 class="text-4xl font-bold text-[#002500]">Tidak ada PPDB</h1>
                 </div>
@@ -27,22 +27,22 @@
                 @endforeach
             @endif
         </div>
-    
+
         <div class="py-5">
             @php
                 $fullText = $ppdb->deskripsi ?? ''; // Pastikan ini aman jika $ppdb tidak ada
                 $limit = 1000;
                 $shortText = strlen($fullText) > $limit ? substr($fullText, 0, $limit) . '...' : $fullText;
             @endphp
-    
+
             <p id="short-text" class="mt-2 text-gray-700 text-justify">{{ $shortText }}</p>
             <p id="more-text" class="hidden mt-2 text-gray-700 text-justify">{{ $fullText }}</p>
         </div>
-    
+
         <button id="toggle-btn" class="mt-4 text-white focus:outline-none">Baca Selengkapnya</button>
         <button id="hide-btn" class="hidden mt-4 text-white focus:outline-none">Baca Lebih Sedikit</button>
     </section>
-    
+
     {{-- PENJELASAN PPDB END --}}
 
     {{-- Unit ppdb start --}}
@@ -75,7 +75,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>        
+        </div>
     </section>
     {{-- Unit ppdb End --}}
 </div>

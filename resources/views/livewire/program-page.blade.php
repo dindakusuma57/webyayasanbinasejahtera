@@ -9,11 +9,11 @@
         <h1 class="text-lg font-semibold">Program Yayasan Bina Sejahtera</h1>
     </div>
 
-    <div data-aos="fade-up" class="py-10 px-4 sm:px-6 lg:px-8 mx-auto bg-gray-50 sm:py-16 ">
+    <div  class="py-10 px-4 sm:px-6 lg:px-8 mx-8 my-8 rounded-lg bg-gray-50 sm:py-16 ">
         @if($programs->count())
-            <div class="flex flex-wrap justify-center gap-4">
+            <div data-aos="fade-up" class="flex flex-wrap justify-center gap-4">
                 @foreach ($programs as $program)
-                    <div class="max-w-sm w-full sm:w-1/2 lg:w-1/4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
+                    <div class="max-w-sm w-full sm:w-1/2 lg:w-1/4 mx-4 my-4 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col">
                         <a href="{{ route('program.show', ['slug' => $program->slug]) }}">
                             <div class="h-48 overflow-hidden">
                                 @php

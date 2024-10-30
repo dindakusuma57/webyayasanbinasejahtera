@@ -42,9 +42,9 @@ class MisiResource extends Resource
                                 ->required()
                                 ->maxLength(255),
 
-                                TextInput::make('deskripsi')
-                                ->required()
-                                ->maxLength(255),
+                            MarkdownEditor::make('deskripsi')
+                                ->columnSpanFull()
+                                ->fileAttachmentsDirectory('misi'),
 
                             FileUpload::make('image')
                                 ->directory('visi'),

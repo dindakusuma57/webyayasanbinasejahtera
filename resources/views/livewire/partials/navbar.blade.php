@@ -104,9 +104,6 @@
                   Kontak
                 </a>
               </div>
-
-
-
             </div>
           </div>
         </div>
@@ -116,10 +113,8 @@
 
   <script>
     function closeDropdown(event) {
-        // Menghentikan default action
         event.preventDefault();
 
-        // Pindah ke link tujuan
         window.location.href = event.currentTarget.href;
     }
 </script>

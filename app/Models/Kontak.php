@@ -9,5 +9,5 @@ class Kontak extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email','no_telp','sosmed','map'];
+    protected $fillable = ['alamat','email','no_telp','sosmed','map'];
 }

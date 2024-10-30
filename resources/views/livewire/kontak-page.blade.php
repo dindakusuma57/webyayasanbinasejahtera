@@ -1,5 +1,6 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <script>
     AOS.init();
 </script>
@@ -10,56 +11,69 @@
         <h1 class="text-lg font-semibold">Kontak Kami</h1>
     </div>
 
-
-<section class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
-    <section class="bg-gray-100 py-10 px-4 sm:px-6 lg:px-8">
-        <div style="margin-top:-140px; margin-bottom:-80px" data-aos="fade-up" class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
-            <div class="mt-16 lg:mt-20">
-                <div class="grid grid-cols-1 md:grid-cols-2">
-                    <div class="rounded-lg overflow-hidden">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31708.832311780945!2d106.74320719477167!3d-6.571554625569635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b2995b3a81%3A0xdcd49de93e3d9f19!2sSMK%20Bina%20Sejahtera%201!5e0!3m2!1sid!2sid!4v1730080331200!5m2!1sid!2sid"
-                            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6149752394385!2d106.74054647362662!3d-6.570182193423148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c57a0fb2730f%3A0x4147e5cc562f6ba6!2sSMK%20Bina%20Sejahtera%203%20Kota%20Bogor!5e0!3m2!1sen!2sid!4v1729242450185!5m2!1sen!2sid"
-                            width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-
-                    <div class="bg-[#6B9B55] text-white rounded-lg p-6" style="border-radius: 0px 20px 20px 0px;">
-                        @foreach($kontaks as $kontak)
-                        <div class="max-w-full mx-auto rounded-lg overflow-hidden">
-
-                            <div class="px-6 py-4">
-                                <h3 class="text-lg font-medium">Alamat Kami</h3>
-                                @php
-                                    $points = explode("\n", $kontak->alamat);
-                                @endphp
-                                @foreach ($points as $point)
-                                    <p class="mt-1">{{ $point }}</p>
-                                @endforeach
-                            </div>
-
-                            <div class="border-t border-gray-200 px-6 py-4">
-                                <h3 class="text-lg font-medium">Sosial Media</h3>
-                                <p class="mt-1">@smabinasejahtera_</p>
-                                <p class="mt-1">@smk_bina_sejahtera</p>
-                                <p class="mt-1">@smkbinasejahtera34</p>
-                            </div>
-                            <div class="border-t border-gray-200 px-6 py-4">
-                                <h3 class="text-lg font-medium">Kontak</h3>
-                                <p class="mt-1">Email: smkbinasejahtera34@gmail.com</p>
-                                <p class="mt-1">Telepon: 0812 8938 1652</p>
-                            </div>
+    <section class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+        <section class="bg-white py-10 px-4 sm:px-6 lg:px-8">
+            <div style="margin-top:-140px; margin-bottom:-80px" data-aos="fade-up" class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
+                <div class="mt-16 lg:mt-20">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="rounded-lg overflow-hidden">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31708.832311780945!2d106.74320719477167!3d-6.571554625569635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b2995b3a81%3A0xdcd49de93e3d9f19!2sSMK%20Bina%20Sejahtera%201!5e0!3m2!1sid!2sid!4v1730080331200!5m2!1sid!2sid"
+                                width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.6149752394385!2d106.74054647362662!3d-6.570182193423148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c57a0fb2730f%3A0x4147e5cc562f6ba6!2sSMK%20Bina%20Sejahtera%203%20Kota%20Bogor!5e0!3m2!1sen!2sid!4v1729242450185!5m2!1sen!2sid"
+                                width="100%" height="240" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
-                        @endforeach
+
+                        <div class="bg-[#6B9B55] text-white rounded-lg p-6" style="border-radius: 0px 20px 20px 0px;">
+                            @foreach($kontaks as $kontak)
+                            <div class="max-w-full mx-auto rounded-lg overflow-hidden">
+
+                                <div class="px-6 py-4">
+                                    <h3 class="text-lg font-medium">Alamat</h3>
+                                    @php
+                                        $points = explode("\n", $kontak->alamat);
+                                    @endphp
+                                    @foreach ($points as $point)
+                                        <p class="mt-1 flex items-center">
+                                            <i class="fas fa-map-marker-alt mr-2 text-white"></i>
+                                            {{ $point }}
+                                        </p>
+                                    @endforeach
+                                </div>
+
+                                <div class="border-t border-gray-200 px-6 py-4">
+                                    <h3 class="text-lg font-medium">Sosial Media</h3>
+                                    @php
+                                        $points = explode("\n", $kontak->sosmed);
+                                    @endphp
+                                    @foreach ($points as $point)
+                                        <p class="mt-1 flex items-center">
+                                            <i class="fab fa-instagram mr-2 text-white"></i>
+                                            {{ $point }}
+                                        </p>
+                                    @endforeach
+                                </div>
+                                <div class="border-t border-gray-200 px-6 py-4">
+                                    <h3 class="text-lg font-medium">Kontak</h3>
+                                    @php
+                                        $points = explode("\n", $kontak->no_telp);
+                                    @endphp
+                                    @foreach ($points as $point)
+                                        <p class="mt-1 flex items-center">
+                                            <i class="fas fa-phone-alt mr-2 text-white"></i>
+                                            {{ $point }}
+                                        </p>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
-</section>
-
-
 
     {{-- Form Kontak --}}
     <section class="py-10">

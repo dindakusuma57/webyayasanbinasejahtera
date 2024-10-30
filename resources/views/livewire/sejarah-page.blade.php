@@ -61,9 +61,15 @@
                 @foreach ($kepengurusans as $index => $kepengurusan)
                 <div class="mt-12 p-6 bg-white rounded-lg border-2 shadow-lg max-w-4sm mx-auto kepengurusan-detail" data-category="{{ $kepengurusan->categorypengurus->tahun }}" style="{{ $index === 0 ? 'display: block;' : 'display: none;' }}">
                     <h2 class="text-[#6B9B55] text-3xl font-bold text-left">{{ $kepengurusan->judul }}</h2>
-                    <p class="mt-4 text-gray-700 text-left">
-                        {{ $kepengurusan->deskripsi }}
-                    </p>
+                    @php
+                    $points = explode("\n", $kepengurusan->deskripsi);
+                    @endphp
+                    @foreach ($points as $point)
+                        <p class="mt-1 flex items-center">
+                        <i class="fab fa-instagram mr-2 text-white"></i>
+                            {{ $point }}
+                        </p>
+                        @endforeach
                     <div class="mt-6 flex justify-left">
                         <img src="{{ asset('storage/' . $kepengurusan->image) }}" alt="{{ $kepengurusan->judul }}" class="rounded-lg shadow-md max-w-full h-auto" style="width: 300px; height:300px" />
                     </div>

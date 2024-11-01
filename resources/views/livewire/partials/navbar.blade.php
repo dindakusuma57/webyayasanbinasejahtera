@@ -4,7 +4,7 @@
         <div class="flex items-center justify-between" >
             <a style="width: max-content" class="flex items-center text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="/" aria-label="Brand">
                 <img src="image/logo.png" class="h-8 w-auto mr-2">
-                Yayasan Bina Sejahtera
+                Yayasan Bina Sejahtera Bogor
               </a>
 
           <div class="md:hidden">

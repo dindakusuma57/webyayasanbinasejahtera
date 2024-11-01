@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="border-t border-gray-200 px-6 py-4">
-                                    <h3 class="text-lg font-medium">Sosial Media</h3>
+                                    <h3 class="text-lg font-medium">Media Sosial</h3>
                                     @php
                                         $points = explode("\n", $kontak->sosmed);
                                     @endphp

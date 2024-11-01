@@ -40,7 +40,6 @@
                                     </svg>
                                 </a>
                             </div>
-
                         </div>
                     @endforeach
                 @endif
@@ -116,7 +115,7 @@
                 <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
                     <div class="w-full flex-col justify-center items-start gap-8 flex">
                         <div class="flex-col justify-start lg:items-start items-center gap-4 flex">
-                            {{-- <h6 class="text-gray-400 text-base font-normal leading-relaxed">Tentang Kami</h6> --}}
+                            <h6 class="text-[#002500] text-base font-normal leading-relaxed">Tentang Kami</h6>
                             <div class="w-full flex-col justify-start lg:items-start items-center gap-3 flex">
                                 <h2
                                     class="text-[#002500] text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
@@ -242,22 +241,57 @@
                     </div>
                 </div>
             </div>
-            <div data-aos="fade-up" class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3" style="margin-right:40px; margin-left: 40px">
-                @foreach($manajemens as $manajemen)
-                    <div>
-                        <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
-                            <a href="{{ $manajemen->link }}" class="block overflow-hidden h-64 rounded-lg">
-                                <img src="{{ $manajemen ? asset('storage/' . $manajemen->image) : '' }}" alt="Manajemen Yayasan" class="object-cover w-full h-56 md:h-64 xl:h-80">
-                            </a>
-                            <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
-                                <p class="mb-1 text-lg font-bold text-gray-100">{{ $manajemen->judul }}</p>
-                                <p class="mb-4 text-xs text-gray-100">Manajemen Yayasan</p>
-                                <p class="mb-4 text-xs tracking-wide text-gray-400">{{ $manajemen->deskripsi }}</p>
+            <div data-hs-carousel='{
+                "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500",
+                "slidesQty": {
+                    "xs": 1,
+                    "sm": 2,
+                    "lg": 3
+                },
+                "items": 1
+            }' class="relative px-20" data-aos="fade-up" style="margin-right: 40px; margin-left: 40px;">
 
-                            </div>
+                <div class="hs-carousel w-full overflow-hidden rounded-lg">
+                    <div class="relative min-h-72 -mx-1">
+                        <div class="hs-carousel-body flex transition-transform duration-700">
+                            @foreach($manajemens as $manajemen)
+                                <div class="hs-carousel-slide px-2">
+                                    <div class="relative overflow-hidden transition duration-300 transform rounded shadow-lg lg:hover:-translate-y-2 hover:shadow-2xl">
+                                        <a href="{{ $manajemen->link }}" class="block overflow-hidden h-64 rounded-lg">
+                                            <img src="{{ $manajemen ? asset('storage/' . $manajemen->image) : '' }}" alt="Manajemen Yayasan" class="object-cover w-full h-56 md:h-64 xl:h-80">
+                                        </a>
+                                        <div class="absolute inset-0 flex flex-col justify-center px-5 py-4 text-center transition-opacity duration-300 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
+                                            <p class="mb-1 text-lg font-bold text-gray-100">{{ $manajemen->judul }}</p>
+                                            <p class="mb-4 text-xs text-gray-100">Manajemen Yayasan</p>
+                                            <p class="mb-4 text-xs tracking-wide text-gray-400">{{ $manajemen->deskripsi }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                @endforeach
+                </div>
+
+                <!-- Carousel Navigation -->
+                <button type="button" class="hs-carousel-prev hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 left-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-s-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                        style="margin-left: 20px;">
+                    <span class="text-2xl" aria-hidden="true">
+                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m15 18-6-6 6-6"></path>
+                        </svg>
+                    </span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button type="button" class="hs-carousel-next hs-carousel-disabled:opacity-50 hs-carousel-disabled:pointer-events-none absolute inset-y-0 right-0 inline-flex justify-center items-center w-[46px] h-full text-gray-800 hover:bg-gray-800/10 focus:outline-none focus:bg-gray-800/10 rounded-e-lg dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                        style="margin-right: 20px;">
+                    <span class="sr-only">Next</span>
+                    <span class="text-2xl" aria-hidden="true">
+                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </span>
+                </button>
+                <div class="hs-carousel-pagination flex justify-center absolute bottom-3 start-0 end-0 space-x-2"></div>
             </div>
     </section>
     {{-- Manajemen end --}}

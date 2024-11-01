@@ -45,15 +45,47 @@
                                 <div class="border-t border-gray-200 px-6 py-4">
                                     <h3 class="text-lg font-medium">Media Sosial</h3>
                                     @php
-                                        $points = explode("\n", $kontak->sosmed);
+                                        $socialMediaAccounts = explode("\n", $kontak->sosmed);
                                     @endphp
-                                    @foreach ($points as $point)
-                                        <p class="mt-1 flex items-center">
-                                            <i class="fab fa-instagram mr-2 text-white"></i>
-                                            {{ $point }}
-                                        </p>
+                                    @foreach ($socialMediaAccounts as $account)
+                                        @php
+                                            $parts = explode(':', $account);
+                                            $platform = isset($parts[0]) ? trim($parts[0]) : '';
+                                            $username = isset($parts[1]) ? trim($parts[1]) : '';
+                                            $icon = '';
+
+                                            if ($platform) {
+                                                switch (strtolower($platform)) {
+                                                    case 'instagram':
+                                                        $icon = 'fab fa-instagram';
+                                                        break;
+                                                    case 'facebook':
+                                                        $icon = 'fab fa-facebook';
+                                                        break;
+                                                    case 'twitter':
+                                                        $icon = 'fab fa-twitter';
+                                                        break;
+                                                    case 'linkedin':
+                                                        $icon = 'fab fa-linkedin';
+                                                        break;
+                                                    case 'youtube':
+                                                        $icon = 'fab fa-youtube';
+                                                        break;
+                                                    default:
+                                                        $icon = 'fab fa-globe';
+                                                        break;
+                                                }
+                                            }
+                                        @endphp
+                                        @if($platform && $username)
+                                            <p class="mt-1 flex items-center">
+                                                <i class="{{ $icon }} mr-2 text-white"></i>
+                                                {{ $username }}
+                                            </p>
+                                        @endif
                                     @endforeach
                                 </div>
+
                                 <div class="border-t border-gray-200 px-6 py-4">
                                     <h3 class="text-lg font-medium">Kontak</h3>
                                     @php

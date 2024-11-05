@@ -9,7 +9,7 @@
         <h1 class="text-lg font-semibold">Struktur Organisasi</h1>
     </div>
 
-    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto" style="background-color: #F3FFF4;">
         <div class="max-w-full mx-auto">
             @foreach($strukturs as $struktur)
             <div class="text-center">

@@ -10,7 +10,7 @@
     </div>
 
     {{-- SEJARAH START --}}
-    <section class="p-10 bg-white text-gray-500 flex flex-col md:flex-row">
+    <section class="p-10 bg-white text-[#002500] flex flex-col md:flex-row" >
         <div data-aos="fade-up" class="md:w-2/3">
             <h2 class="text-xl font-bold mb-4">Sejarah Yayasan Bina Sejahtera</h2>
 
@@ -32,7 +32,7 @@
     {{-- SEJARAH END --}}
 
     {{-- SEJARAH KEPENGURUSAN START --}}
-    <section class="py-10">
+    <section class="py-10" style="background-color: #F3FFF4;">
         <div data-aos="fade-up" class="max-w-6xl mx-auto">
             <div class="text-center">
                 <div class="mb-2 p-2 bg-[#6B9B55] border-2 border-[#6B9B55] rounded-full inline-block">

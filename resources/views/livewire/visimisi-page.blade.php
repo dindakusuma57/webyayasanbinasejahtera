@@ -11,7 +11,7 @@
     </div>
 
     {{-- VISI START --}}
-    <section class="p-10 bg-[#FFF] text-[#6B9B55] flex flex-col md:flex-row">
+    <section class="p-10 text-[#6B9B55] flex flex-col md:flex-row" style="background-color: #F3FFF4;">
         <section class="overflow-hidden">
             <div data-aos="fade-up" class="mx-auto max-w-7xl px-6 lg:px-8">
                 @foreach($visis as $visi)

@@ -28,7 +28,7 @@
                             <h1 style="width: 750px" class="block text-3xl font-bold text-white sm:text-4xl lg:text-6xl lg:leading-tight">
                                 {{ $hero->judul }}
                             </h1>
-                            <p style="width: 750px" class="mt-3 text-lg text-white">
+                            <p style="width: 600px" class="mt-6 text-lg text-white">
                                 {{ $hero->deskripsi }}
                             </p>
 
@@ -109,7 +109,7 @@
       {{-- Statistik Pengunjung end --}}
 
       {{-- Tentang section start --}}
-      <section class="py-10 relative xl:mr-0 lg:mr-5 mr-0">
+      <section class="py-10 px-20 relative xl:mr-0 lg:mr-5 mr-0" style="background-color: #F3FFF4;">
         <div data-aos="fade-up" class="w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto">
             <div class="w-full justify-start items-center xl:gap-12 gap-10 grid lg:grid-cols-2 grid-cols-1">
                 <div class="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
@@ -121,7 +121,7 @@
                                     class="text-[#002500] text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
                                     {{ $tentang ? $tentang->judul : 'Judul tidak tersedia.' }}</h2>
                                 <p
-                                    class="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
+                                    class="text-[#002500] text-base font-normal leading-relaxed lg:text-start text-center">
                                     {{ $tentang ? $tentang->deskripsi : 'Deskripsi tidak tersedia.' }}</p>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                 </div>
                 <div class="w-full lg:justify-start justify-center items-start flex">
                     <div
-                        class="sm:w-[564px] w-full sm:h-[646px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
+                        class="sm:w-[564px] w-full sm:h-[550px] h-full sm:bg-gray-100 rounded-3xl sm:border border-gray-200 relative">
                         <img class="sm:mt-5 sm:ml-5 w-full h-full rounded-3xl object-cover"
                         src="{{ $tentang ? asset('storage/' . $tentang->image) : '' }}" alt="Tentang Yayasan" />
                     </div>
@@ -187,7 +187,7 @@
                     @foreach($units as $unit)
                     <div class="hs-carousel-slide px-1">
                         <div class="relative group overflow-hidden bg-gray-100 p-6 dark:bg-neutral-900 h-full flex justify-center items-center">
-                            <a href="{{ $unit->link }}" class="absolute inset-0 z-10" style="display: block;"></a> <!-- Link di sini membungkus seluruh card -->
+                            <a href="{{ $unit->link }}" class="absolute inset-0 z-10" style="display: block;"></a>
 
                             <a href="{{ $unit->link }}" class="relative text-2xl font-bold tracking-tight text-[#002500] z-10 transition-colors duration-300 group-hover:text-gray-200">
                                 {{ $unit->judul }}
@@ -228,7 +228,7 @@
       {{-- Unit End --}}
 
       {{-- Manajemen Start --}}
-      <section class="py-10">
+      <section class="py-10" style="background-color: #F3FFF4;">
             <div data-aos="fade-up" class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                 <div class="text-center">
                     <div class="relative flex flex-col items-center">
@@ -249,7 +249,7 @@
                     "lg": 3
                 },
                 "items": 1
-            }' class="relative px-20" data-aos="fade-up" style="margin-right: 40px; margin-left: 40px;">
+            }' class="relative px-20" data-aos="fade-up" style="margin-right: 20px; margin-left: 20px;">
 
                 <div class="hs-carousel w-full overflow-hidden rounded-lg">
                     <div class="relative min-h-72 -mx-1">

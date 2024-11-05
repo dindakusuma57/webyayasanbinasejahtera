@@ -6,12 +6,12 @@
 <link rel="stylesheet" href="css/style.css">
 
 <div>
-    <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">
+    <div class="bg-[#6B9B55] p-4 text-white text-center">
         <h1 class="text-lg font-semibold">Program Yayasan Bina Sejahtera</h1>
     </div>
 
     {{-- PENJELASAN PPDB START --}}
-    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section data-aos="fade-up" class="py-5 px-4 sm:px-6 lg:px-8 mx-auto" style="background-color: #F3FFF4;">
         <div class="max-w-xl mx-auto">
             @if($ppdbs->isEmpty())
                 <div class="text-center">

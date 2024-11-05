@@ -7,11 +7,11 @@
 @livewireStyles
 
 <div>
-    <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">
+    <div class="bg-[#6B9B55] p-4 text-white text-center">
         <h1 class="text-lg font-semibold">Kontak Kami</h1>
     </div>
 
-    <section class="py-10 px-4 sm:px-6 lg:px-8 mx-auto">
+    <section class="py-10 px-4 sm:px-6 lg:px-8 mx-auto" style="background-color: #F3FFF4;">
         <section class="bg-white py-10 px-4 sm:px-6 lg:px-8">
             <div style="margin-top:-140px; margin-bottom:-80px" data-aos="fade-up" class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
                 <div class="mt-16 lg:mt-20">
@@ -108,7 +108,7 @@
     </section>
 
     {{-- Form Kontak --}}
-    <section class="py-10">
+    <section class="" style="background-color: #F3FFF4;">
         <div data-aos="fade-up" class="font-[sans-serif]">
             <div class="bg-gradient-to-r bg-[#6B9B55] w-full h-36">
                 <div class="px-6 py-6 text-center" style="color:white">
@@ -180,9 +180,9 @@
                     <span class="sr-only">Success</span>
                 </div>
                 <p class="mb-4 text-lg font-semibold text-white dark:text-white">Pesan Anda telah berhasil dikirim!</p>
-                <button data-modal-toggle="successModal" type="button" class="py-2 px-3 text-sm font-medium text-center text-[#6B9B55] rounded-lg bg-white hover:bg-[#002500] focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900">
+                {{-- <button data-modal-toggle="successModal" type="button" class="py-2 px-3 text-sm font-medium text-center text-[#6B9B55] rounded-lg bg-white hover:bg-[#002500] focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900">
                     Lanjutkan
-                </button>
+                </button> --}}
             </div>
         </div>
     </div>

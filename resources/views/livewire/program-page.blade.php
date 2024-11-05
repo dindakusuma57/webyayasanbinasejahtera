@@ -5,11 +5,11 @@
 </script>
 
 <div>
-    <div class="bg-[#6B9B55] p-4 text-white text-center mb-4">
+    <div class="bg-[#6B9B55] p-4 text-white text-center">
         <h1 class="text-lg font-semibold">Program Yayasan Bina Sejahtera</h1>
     </div>
 
-    <div  class="py-10 px-4 sm:px-6 lg:px-8 mx-8 my-8 rounded-lg bg-gray-50 sm:py-16 ">
+    <div  class="py-10 px-4 sm:px-6 lg:px-8 mx-8 my-8 rounded-lg bg-gray-50 sm:py-16">
         @if($programs->count())
             <div data-aos="fade-up" class="flex flex-wrap justify-center gap-4">
                 @foreach ($programs as $program)
